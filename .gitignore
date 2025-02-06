@@ -1,0 +1,21 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Database files
+db.sqlite3
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Django specific
+*.log
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+.DS_Store
