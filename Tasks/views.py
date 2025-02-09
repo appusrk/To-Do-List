@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Task
+from datetime import datetime
 
 # Create your views here.
 def show_list(request):
@@ -9,7 +10,9 @@ def show_list(request):
 def add_task(request):
     if request.method == 'POST':
         title = request.POST.get('title')  
-        Task.objects.create(title=title)
+        task_date = request.POST.get("date")  
+        task_time = request.POST.get("time")
+        Task.objects.create(title=title, due_date=task_date, ontime=task_time)
         return redirect('task_list')  
     return render(request, 'tasks/add_list.html')  
 
