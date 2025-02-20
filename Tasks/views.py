@@ -1,10 +1,29 @@
 from django.shortcuts import render, redirect
-from .models import Task
+from .models import Task, Reg
 from datetime import datetime
 
-# Create your views here.
+# Create your views here.)
+def home(request):
+    return render(request, 'tasks/home.html')
+
+def sign(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')  
+        passw = request.POST.get('passw')  
+        email = request.POST.get('email')
+        if name and passw and email:  # Ensure no empty values are submitted
+            Reg.objects.create(name=name, passw=passw, email=email)
+            return redirect('task_list')
+        else:
+            pass  
+    return render(request, 'tasks/signup.html')  
+
 def show_list(request):
-    tasks = Task.objects.all() 
+    query = request.GET.get('q')
+    if query:
+        tasks = Task.objects.filter(title__icontains=query)
+    else:
+        tasks = Task.objects.all()
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 def add_task(request):
