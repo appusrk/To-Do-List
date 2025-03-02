@@ -4,23 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <style>
+        body{
+            background-image: linear-gradient(to right,rgb(147, 238, 147),rgb(244, 160, 244));
+        }
+        .formc{
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+            width: 740px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1 class="head">Sign Up</h1><br>
+    <h1 class="head" align="center">Sign Up</h1><br>
+    <div class="formc">
     <form method="POST">
         {% csrf_token %}
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name"><br>
         
         <label for="passw">Password:</label>
-        <input type="password" name="passw" id="passw">
+        <input type="password" name="passw" id="passw" autocomplete="off"><br>
         
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" autocomplete="off"><br>
+        <br>
         
         <a href="{% url 'task_list' %}">Show Tasks</a>
 
     </form>
-    
+</div>
 </body>
 </html>
